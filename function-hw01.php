@@ -8,10 +8,7 @@ function to_list($data = array()){
         echo '<tr>';
         foreach($data AS $key=>$value){
             echo '<th>Думата"'.$key.'"</th>';
-        }
-        echo '</tr><tr>';
-        foreach($data AS $key=>$value){
-        echo '<td>'.color_it($value).'</td>';
+            echo '<td>'.color_it($value).'</td>';
         }
         echo '</tr></table>';
         }
@@ -27,5 +24,23 @@ function color_it($value){
     }
 };
 
+
+
+//Домашна работа 
+// function to_list($data = array()){
+//     if(count($data)>0){
+//         echo '<h3>Таблица</h3>';
+//         echo '<table border=1>';
+//         echo '<tr>';
+//         foreach($data AS $key=>$value){
+//             echo '<th>Думата"'.$key.'"</th>';
+//         }
+//         echo '</tr><tr>';
+//         foreach($data AS $key=>$value){
+//         echo '<td>'.color_it($value).'</td>';
+//         }
+//         echo '</tr></table>';
+//         }
+// };
 
 ?>
