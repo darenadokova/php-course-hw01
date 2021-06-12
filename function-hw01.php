@@ -4,24 +4,24 @@
 function to_list($data = array()){
     if(count($data)>0){
         echo '<h3>Таблица</h3>';
-        echo '<table border=1>';
-        echo '<tr>';
-        foreach($data AS $key=>$value){
-            echo '<th>Думата"'.$key.'"</th>';
-            echo '<td>'.color_it($value).'</td>';
-        }
-        echo '</tr></table>';
-        }
-};
+// променлива, в която ще се съдържа кода на таблицата
+$table =  '<table border=1>';
+// Заглавния ред
+$table_header =  '<tr>';
+// тялото на таблицата
+$table_body = '<tr>';
 
-function color_it($value){
-    if($value >1 AND $value <4) {
-        return '<span style="color:orange">'.$value.'</span>';
-    }elseif($value>=4) {
-        return '<span style="color:red">'.$value.'</span>';
-    }else{
-        return $value;
-    }
+foreach($data AS $key=>$value){
+$table_header .= '<th>Думата"'.$key.'"</th>';
+$table_body .= '<td>'.$value.'</td>';
+}
+//довършваме редовете
+$table_header .= '</tr>';
+$table_body .= '</tr>';
+// сглобяваме цялата таблица
+$table .= $table_header.$table_body.'</table>';
+echo $table;
+        }
 };
 
 
