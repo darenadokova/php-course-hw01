@@ -1,0 +1,21 @@
+.img {
+    border: 1px solid black;
+    max-width: 205px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+p {
+    padding-top: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+input[type=button] {
+   float: right;
+   margin: 5px;
+}
