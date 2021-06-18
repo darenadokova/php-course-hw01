@@ -13,7 +13,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
         }
   
 
-      //проверявае дали файлът съществува
+      //проверяваме дали файлът съществува
       if(file_exists('upload/'.$_FILES['fileToUpload']['name'])){
             $is_ok = false;
             $error[] = 'Файл с такова име вече съществува.';
@@ -41,11 +41,15 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
         } else{
             $error[] = 'Проблем при качването на файла';
         }
+
     }
  else {
     $error[] = 'Няма прикачен файл';
 }
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +72,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
     <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="fileToUpload" id="">
     <input type="submit" name="submit" value="Upload File">
+    <input type="submit" name="button1" value="X"/>
     </form>
     <hr>
     
@@ -77,18 +82,35 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
         $button = '<button type="button" class="btn-close px-2 py-2" style="float:right;" disabled aria-label="Close"></button>';
         $info = '<p>Това е каченото изображение</p>';
         foreach(glob($target_dir.'*.{jpg,jpeg,png,gif}',GLOB_BRACE) AS $filename){
-            echo '<div class="img">'.$button.'<img src="'.$filename.'">'.$info.'</div>';
+            echo '<div class="img">'.$button.'<img src="'.$filename.'">'.basename($filename).'</div>';
         }
 
-  
-     //проверка и трием
-        if(array_key_exists('btn-close',$_POST)){
-     
+        //1 начин
+        // if(isset($_POST['button1'])) {
+        //     unlink($filename);
+        //     echo 'it works!';
+        // }
+
+        //2 начин
+        if(array_key_exists('button1', $_POST)) {
+            button1();
             unlink($filename);
-            echo "Работи!";
-        } else {
-            echo "Error!";
         }
+
+        function button1() {
+            echo "This is Button1 that is selected";
+          
+        }
+
+        //стара проверка
+    //     if(array_key_exists('btn-close',$_POST)){
+     
+    //         unlink($filename);
+    //         echo "Работи!";
+    //     } else {
+    //         echo "Error!";
+    //     }
+
 
         
     ?>
