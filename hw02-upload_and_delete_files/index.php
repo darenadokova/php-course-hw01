@@ -72,7 +72,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
     <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="fileToUpload" id="">
     <input type="submit" name="submit" value="Upload File">
-    <input type="submit" name="button1" value="X"/>
+    <input type="submit" name="delete" value="Delete"/>
     </form>
     <hr>
     
@@ -85,31 +85,14 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
             echo '<div class="img">'.$button.'<img src="'.$filename.'">'.basename($filename).'</div>';
         }
 
-        //1 начин
-        // if(isset($_POST['button1'])) {
-        //     unlink($filename);
-        //     echo 'it works!';
-        // }
 
-        //2 начин
-        if(array_key_exists('button1', $_POST)) {
-            button1();
-            unlink($filename);
-        }
-
-        function button1() {
-            echo "This is Button1 that is selected";
-          
-        }
-
-        //стара проверка
-    //     if(array_key_exists('btn-close',$_POST)){
-     
-    //         unlink($filename);
-    //         echo "Работи!";
-    //     } else {
-    //         echo "Error!";
-    //     }
+        if(isset($_POST['delete']) && $_POST['delete']=="Delete"){
+            echo "Button works!";
+            if(file_exists('upload/'.$_FILES['fileToUpload']['name'])){
+                echo "Button works!";
+                unlink($filename);
+            }
+        };
 
 
         
