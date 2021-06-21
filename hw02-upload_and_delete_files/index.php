@@ -76,27 +76,27 @@ if(isset($_POST['submit']) && $_POST['submit']=="Upload File"){
     </form>
     <hr>
     
+
+ 
     <?php 
         $target_dir = "upload/";
-        $delete_btn = '<input type="button" name="test" id="test" value="X">';
         $button = '<button type="button" class="btn-close px-2 py-2" style="float:right;" disabled aria-label="Close"></button>';
         $info = '<p>Това е каченото изображение</p>';
         foreach(glob($target_dir.'*.{jpg,jpeg,png,gif}',GLOB_BRACE) AS $filename){
-            echo '<div class="img">'.$button.'<img src="'.$filename.'">'.basename($filename).'</div>';
-        }
 
-
-        if(isset($_POST['delete']) && $_POST['delete']=="Delete"){
-            echo "Button works!";
-            if(file_exists('upload/'.$_FILES['fileToUpload']['name'])){
-                echo "Button works!";
+            if(isset($_POST['delete']) && $_POST['delete']=="X"){
                 unlink($filename);
+            } else {
+                echo '<div class="img"><a href="https://disney.bg/" target="_blank"><img src="'.$filename.'"></a>'.basename($filename).
+                '<form action="" method="post" enctype="multipart/form-data">
+                <input type="submit" name="delete" value="X"/></form></div>';
             }
-        };
-
+        }
 
         
     ?>
+ 
+
    <!-- php var_dump($success)
     <hr>
     <pre>
