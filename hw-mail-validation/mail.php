@@ -1,4 +1,5 @@
 <?php
+ $error = array();
 session_start();
 if(!isset($_SESSION['count'])){
     $_SESSION['count'] = 0;
